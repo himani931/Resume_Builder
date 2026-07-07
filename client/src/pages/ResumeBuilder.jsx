@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { dummyResumeData } from "../assets/assets";
 import { useParams, Link } from "react-router-dom";
 import {
   ArrowLeftIcon,
@@ -12,6 +13,9 @@ import {
   User,
 } from "lucide-react";
 import PersonalInfoForm from "../components/PersonalInfoForm";
+import ResumePreview from "../components/ResumePreview";
+import TemplateSelector from "../components/TemplateSelector";
+import ColorPicker from "../components/ColorPicker";
 const ResumeBuilder = () => {
   const { resumeId } = useParams();
 
@@ -82,7 +86,23 @@ const ResumeBuilder = () => {
 
               {/* section navigation */}
               <div className="flex justify-between items-center mb-6 border-b border-gray-300 py-1">
-                <div></div>
+                <div className="flex items-center gap-2">
+                  <TemplateSelector
+                    selectedTemplate={resumeData.template}
+                    onChange={(template) =>
+                      setResumeData((prev) => ({ ...prev, template }))
+                    }
+                  />
+                  <ColorPicker
+                    selectedColor={resumeData.accent_color}
+                    onChange={(color) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        accent_color: color,
+                      }))
+                    }
+                  />
+                </div>
 
                 <div className="flex items-center">
                   {activeSectionIndex !== 0 && (
@@ -131,7 +151,15 @@ const ResumeBuilder = () => {
           </div>
 
           {/*right panel preview */}
-          <div></div>
+          <div className="lg:col-span-7 max-lg:mt-6">
+            <div>{/* ---buttons--- */}</div>
+
+            <ResumePreview
+              data={resumeData}
+              template={resumeData.template}
+              accentcolor={resumeData.accent_color}
+            />
+          </div>
         </div>
       </div>
     </div>

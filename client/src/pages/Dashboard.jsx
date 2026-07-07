@@ -141,7 +141,7 @@ const Dashboard = () => {
         {showCreateResume && (
           <form
             onSubmit={createResume}
-            onClick={() => setShowCreateResume}
+            onClick={() => setShowCreateResume(false)}
             className="fixed inset-0 bg-black/70  backdrop-blur bg-opacity-50 z-10 flex items-center justify-center"
           >
             <div
@@ -174,7 +174,7 @@ const Dashboard = () => {
         {showUploadResume && (
           <form
             onSubmit={uploadResume}
-            onClick={() => setShowUploadResume}
+            onClick={() => setShowUploadResume(false)}
             className="fixed inset-0 bg-black/70  backdrop-blur bg-opacity-50 z-10 flex items-center justify-center"
           >
             <div
@@ -232,7 +232,7 @@ const Dashboard = () => {
         {editResumeId && (
           <form
             onSubmit={editTitle}
-            onClick={() => setEditResumeId("")}
+            onClick={() => setEditResumeId(false)}
             className="fixed inset-0 bg-black/70  backdrop-blur bg-opacity-50 z-10 flex items-center justify-center"
           >
             <div
